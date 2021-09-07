@@ -1,31 +1,30 @@
 import React from 'react';
 
 // JSX:直感的にHTMLを表現ができるため、JSではなく、JSX(xlm)を使用
-// class App extends Component {
-//   render() {
-//     return (
-//       <React.Fragment>
-//         <label htmlFor="bar">bar</label>
-//         <input type="text" onChange={() => {console.log("I am Chinko")}} />
-//       </React.Fragment>
-//     )
-//   }
-// }
+const App = () => {
+  const profiles = [
+    { name: "Taro", age: 10 },
+    { name: "Hanako", age: 4 },
+    { name: "NoName" }
+  ]
 
-// function components
-const App = () => { 
-  return ( 
-    <>
-      <Cat />
-      <Cat />
-      <Cat />
-      <Cat />
-    </>
+  return (
+    <div>
+      {
+        profiles.map((profile, index) => {
+          return <User name={profile.name} age={profile.age} key={index} />
+        })
+      }
+    </div>
   )
 }
 
-const Cat = () => { 
-  return <div>Meowo</div>
+const User = (props) => {
+  return <div>Hi, I am {props.name}, and {props.age} yaers old!</div>
+}
+
+User.defaultProps = {
+  age: 1
 }
 
 export default App;
