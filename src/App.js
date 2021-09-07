@@ -1,11 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // JSX:直感的にHTMLを表現ができるため、JSではなく、JSX(xlm)を使用
 const App = () => {
   const profiles = [
-    { name: "Taro", age: 10 },
+    { name: "Taro", age: 7 },
     { name: "Hanako", age: 4 },
-    { name: "NoName" }
+    { name: "NoName", age: 3 }
   ]
 
   return (
@@ -23,8 +24,10 @@ const User = (props) => {
   return <div>Hi, I am {props.name}, and {props.age} yaers old!</div>
 }
 
-User.defaultProps = {
-  age: 1
+// 型タイプを設定
+User.propTypes = {
+  name: PropTypes.string,
+  age: PropTypes.number.isRequired
 }
 
 export default App;
